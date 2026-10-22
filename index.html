@@ -1133,5 +1133,80 @@ document.addEventListener("keydown", function(event) {
 });
 </script>
 
-</body>
+<!-- PrimeX VIP Gift Preview -->
+<style>
+#pxGiftPreview {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: radial-gradient(circle at center, #17365d 0%, #07111f 65%, #03070d 100%);
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: sans-serif;
+  text-align: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+#pxGiftPreview .px-gift {
+  font-size: 110px;
+  filter: drop-shadow(0 0 22px #e7bd58);
+  animation: pxFloat 2s ease-in-out infinite,
+             pxGlow 2s ease-in-out infinite alternate;
+}
+
+#pxGiftPreview h2 {
+  color: #f5d783;
+  margin: 25px 0 8px;
+}
+
+#pxGiftPreview p {
+  color: #c7d5e8;
+  line-height: 1.8;
+}
+
+#pxGiftPreview button {
+  background: linear-gradient(135deg, #f7df91, #b88728);
+  color: #101827;
+  border: none;
+  padding: 13px 35px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 22px;
+  cursor: pointer;
+}
+
+@keyframes pxFloat {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+@keyframes pxGlow {
+  from { filter: drop-shadow(0 0 12px #b88728); }
+  to { filter: drop-shadow(0 0 35px #ffe8a0); }
+}
+</style>
+
+<div id="pxGiftPreview">
+  <div class="px-gift" id="pxGiftArt">👑</div>
+  <h2 id="pxGiftName">هدیه ویژه PrimeX</h2>
+  <p>کلکسیون ویژه و لوکس PrimeX VIP</p>
+  <button onclick="pxCloseGift()">بازگشت</button>
+</div>
+
+<script>
+function pxOpenGift(emoji, name) {
+  document.getElementById("pxGiftArt").textContent = emoji;
+  document.getElementById("pxGiftName").textContent = name;
+  document.getElementById("pxGiftPreview").style.display = "flex";
+}
+
+function pxCloseGift() {
+  document.getElementById("pxGiftPreview").style.display = "none";
+}
+</script></body>
       </html>
