@@ -1197,7 +1197,6 @@ document.addEventListener("keydown", function(event) {
   <p>کلکسیون ویژه و لوکس PrimeX VIP</p>
   <button onclick="pxCloseGift()">بازگشت</button>
 </div>
-
 <script>
 function pxOpenGift(emoji, name) {
   document.getElementById("pxGiftArt").textContent = emoji;
@@ -1208,5 +1207,19 @@ function pxOpenGift(emoji, name) {
 function pxCloseGift() {
   document.getElementById("pxGiftPreview").style.display = "none";
 }
-</script></body>
-      </html>
+</script>
+
+<script>
+function previewSticker(index) {
+  const s = stickerSets[index];
+  pxOpenGift(s.emoji, s.name);
+}
+
+function previewGold(index) {
+  const s = goldSets[index];
+  pxOpenGift(s.emoji, s.name);
+}
+</script>
+
+</body>
+</html>
