@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0d20">
+<title>PrimeX VIP</title>
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+<style>
+:root {
+  --bg: #090c1b;
+  --card: #141a32;
+  --card2: #1b2140;
+  --blue: #38a3ff;
+  --purple: #9a60ff;
+  --pink: #e35eff;
+  --gold: #ffcf69;
+  --text: #f7f7ff;
+  --muted: #9ca9cb;
+  --line: #ffffff12;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 18px 15px 35px;
+  font-family: Tahoma, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 90% 0%, #39308055, transparent 40%),
+    radial-gradient(ellipse at 0% 35%, #1455a733, transparent 35%),
+    var(--bg);
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:active {
+  transform: scale(.97);
+}
+
+.container {
+  max-width: 480px;
+  margin: auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 27px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  font-size: 25px;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  box-shadow: 0 0 28px #755cff44;
+}
+
+.brand h1 {
+  font-size: 18px;
+  margin: 0 0 5px;
+}
+
+.brand p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.online {
+  padding: 8px 10px;
+  border-radius: 20px;
+  background: #14382f;
+  color: #8df7cb;
+  font-size: 10px;
+}
+
+.greeting {
+  margin-bottom: 20px;
+}
+
+.greeting h2 {
+  font-size: 24px;
+  margin: 0 0 10px;
+}
+
+.greeting p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 2;
+  margin: 0;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 25px;
+  padding: 23px;
+  margin-bottom: 23px;
+  background: linear-gradient(130deg, #176fda, #5845d5 57%, #a34eea);
+  box-shadow: 0 15px 45px #6549d633;
+}
+
+.hero:before {
+  content: "✦";
+  position: absolute;
+  font-size: 145px;
+  left: -10px;
+  top: -36px;
+  color: #fff;
+  opacity: .10;
+}
+
+.hero:after {
+  content: "";
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  border: 1px solid #ffffff35;
+  border-radius: 50%;
+  left: 30px;
+  bottom: -95px;
+}
+
+.hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.pill {
+  padding: 8px 11px;
+  border-radius: 11px;
+  background: #ffffff25;
+  font-size: 11px;
+}
+
+.crown {
+  font-size: 32px;
+}
+
+.hero h2 {
+  font-size: 26px;
+  margin: 23px 0 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero p {
+  font-size: 12px;
+  color: #eeeaff;
+  line-height: 2;
+  margin: 0 0 17px;
+  position: relative;
+  z-index: 1;
+}
+
+.white-button {
+  border: 0;
+  background: #fff;
+  color: #392b89;
+  padding: 14px;
+  border-radius: 14px;
+  font-weight: bold;
+  font-size: 12px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 26px 0 14px;
+}
+
+.section-head h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.section-head span {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  margin-bottom: 22px;
+}
+
+.stat {
+  padding: 14px 5px;
+  text-align: center;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #192343, #13182c);
+  border: 1px solid var(--line);
+}
+
+.stat-icon {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.stat strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.stat small {
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.feature {
+  text-align: right;
+  border: 1px solid var(--line);
+  background: linear-gradient(145deg, #1a2140, #11162a);
+  border-radius: 20px;
+  padding: 15px;
+  min-height: 147px;
+  color: white;
+  transition: .2s;
+  width: 100%;
+}
+
+.feature-icon {
+  width: 47px;
+  height: 47px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  font-size: 25px;
+  margin-bottom: 13px;
+  background: linear-gradient(135deg, #3199ff48, #a35dff55);
+}
+
+.feature h4 {
+  font-size: 13px;
+  margin: 0 0 8px;
+}
+
+.feature p {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.9;
+  margin: 0;
+}
+
+.feature .arrow {
+  float: left;
+  color: #a9b9ff;
+}
+
+.banner {
+  margin-top: 22px;
+  padding: 17px;
+  border-radius: 19px;
+  background: linear-gradient(110deg, #172c52, #392254);
+  border: 1px solid #7c74ff25;
+}
+
+.banner h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.banner p {
+  color: #b8c3e3;
+  font-size: 11px;
+  line-height: 1.9;
+  margin: 0 0 13px;
+}
+
+.secondary-button {
+  border: 1px solid #ffffff24;
+  color: white;
+  background: #ffffff0d;
+  border-radius: 12px;
+  padding: 11px 14px;
+  font-size: 11px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+  padding: 15px;
+  border: 1px solid var(--line);
+  background: #151a30;
+  border-radius: 19px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  font-size: 24px;
+}
+
+.profile-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-info h4 {
+  font-size: 12px;
+  margin: 0 0 7px;
+  overflow-wrap: anywhere;
+}
+
+.profile-info p {
+  font-size: 10px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.member {
+  background: #8056ff24;
+  color: #cbb8ff;
+  padding: 7px;
+  border-radius: 9px;
+  font-size: 9px;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 10px;
+  color: #7481a8;
+}
+
+/* پنجره امکانات */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: #050714d9;
+  padding: 20px 14px;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay.show {
+  display: flex;
+}
+
+.modal {
+  width: 100%;
+  max-width: 440px;
+  max-height: 85vh;
+  overflow-y: auto;
+  border: 1px solid #ffffff18;
+  border-radius: 24px;
+  background: #12182e;
+  padding: 20px;
+  box-shadow: 0 20px 80px #0008;
+  animation: appear .2s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 17px;
+}
+
+.modal-head h3 {
+  font-size: 17px;
+  margin: 0;
+}
+
+.close {
+  width: 35px;
+  height: 35px;
+  border: 0;
+  border-radius: 12px;
+  color: white;
+  background: #ffffff12;
+  font-size: 20px;
+}
+
+.modal-description {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 2;
+  margin: 0 0 17px;
+}
+
+.sticker-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+}
+
+.sticker {
+  border-radius: 17px;
+  padding: 15px 7px;
+  text-align: center;
+  background: linear-gradient(145deg, #1c2b52, #252044);
+  border: 1px solid #ffffff12;
+}
+
+.sticker .art {
+  font-size: 39px;
+  margin: 5px 0 12px;
+  filter: drop-shadow(0 0 10px #8265ff70);
+}
+
+.sticker strong {
+  display: block;
+  font-size: 11px;
+  margin-bottom: 7px;
+}
+
+.sticker small {
+  color: #aab6d7;
+  font-size: 9px;
+}
+
+.gold-sticker {
+  background: linear-gradient(145deg, #47351c, #27203b);
+}
+
+.gold-sticker .art {
+  filter: drop-shadow(0 0 10px #ffca5b80);
+}
+
+.item-button {
+  display: block;
+  width: 100%;
+  margin-top: 11px;
+  padding: 10px;
+  color: white;
+  border: 1px solid #ffffff1c;
+  border-radius: 11px;
+  background: #ffffff0c;
+  font-size: 10px;
+}
+
+.wallpaper-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.wallpaper {
+  height: 105px;
+  border-radius: 17px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(120deg, #087be5, #8a44eb);
+}
+
+.wallpaper:nth-child(2) {
+  background: linear-gradient(120deg, #161d4a, #e35eff);
+}
+
+.wallpaper:nth-child(3) {
+  background: linear-gradient(120deg, #11152c, #168bd6, #7852ff);
+}
+
+.wallpaper strong {
+  font-size: 13px;
+}
+
+.wallpaper span {
+  font-size: 10px;
+  opacity: .9;
+}
+
+.reward-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.reward-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: #765cff26;
+  font-size: 23px;
+}
+
+.reward-row div:nth-child(2) {
+  flex: 1;
+}
+
+.reward-row strong {
+  display: block;
+  font-size: 11px;
+  margin-bottom: 6px;
+}
+
+.reward-row small {
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.small-button {
+  border: 0;
+  padding: 9px 11px;
+  border-radius: 10px;
+  background: linear-gradient(120deg, var(--blue), var(--purple));
+  color: white;
+  font-size: 10px;
+}
+
+.primary-button {
+  width: 100%;
+  padding: 13px;
+  margin-top: 13px;
+  border: 0;
+  border-radius: 13px;
+  color: white;
+  background: linear-gradient(120deg, var(--blue), var(--purple));
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.profile-card-preview {
+  text-align: center;
+  border-radius: 20px;
+  padding: 24px 15px;
+  background: linear-gradient(135deg, #176fda, #6241d1, #a34eea);
+}
+
+.profile-card-preview .big-avatar {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.profile-card-preview h3 {
+  font-size: 19px;
+  margin: 0 0 8px;
+}
+
+.profile-card-preview p {
+  font-size: 11px;
+  color: #eee8ff;
+}
+
+.profile-card-preview .rank {
+  display: inline-block;
+  padding: 8px 12px;
+  background: #ffffff22;
+  border-radius: 10px;
+  font-size: 10px;
+}
+
+.notice {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 13px;
+  background: #ffffff08;
+  color: #b6c2e1;
+  font-size: 10px;
+  line-height: 2;
+}
+
+@media (max-width: 350px) {
+  body {
+    padding: 13px 10px;
+  }
+
+  .greeting h2 {
+    font-size: 21px;
+  }
+
+  .feature {
+    padding: 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <header class="header">
+    <div class="brand">
+      <div class="logo">P</div>
+      <div>
+        <h1>PrimeX VIP</h1>
+        <p>فراتر از یک تجربه معمولی ✨</p>
+      </div>
+    </div>
+    <div class="online">● آماده</div>
+  </header>
+
+  <section class="greeting">
+    <h2>سلام، <span id="username">رفیق</span> 💙</h2>
+    <p>به دنیای اختصاصی پرایم‌اکس خوش اومدی.<br>
+    اینجا همه‌چیز برای یه تجربه خفن آماده‌ست!</p>
+  </section>
+
+  <section class="hero">
+    <div class="hero-top">
+      <span class="pill">نسخه اختصاصی</span>
+      <span class="crown">👑</span>
+    </div>
+    <h2>PrimeX VIP</h2>
+    <p>استیکرهای خاص، طرح‌های نئونی، کارت پروفایل و کلی چیز جذاب در یک جا.</p>
+    <button class="white-button" onclick="openPanel('vip')">
+      ✨ کشف دنیای VIP
+    </button>
+  </section>
+
+  <div class="section-head">
+    <h3>آمار تو</h3>
+    <span>خوش اومدی به خانواده ما</span>
+  </div>
+
+  <section class="stats">
+    <div class="stat">
+      <div class="stat-icon">💎</div>
+      <strong>۱</strong>
+      <small>سطح نمایشی</small>
+    </div>
+    <div class="stat">
+      <div class="stat-icon">⚡</div>
+      <strong>۱۲۰</strong>
+      <small>امتیاز نمایشی</small>
+    </div>
+    <div class="stat">
+      <div class="stat-icon">🎁</div>
+      <strong>۳</strong>
+      <small>جایزه نمایشی</small>
+    </div>
+  </section>
+
+  <div class="section-head">
+    <h3>بخش‌های جذاب</h3>
+    <span>انتخاب کن و لذت ببر</span>
+  </div>
+
+  <section class="grid">
+
+    <button class="feature" onclick="openPanel('stickers')">
+      <div class="feature-icon">🎭</div>
+      <h4>استیکرهای ویژه <span class="arrow">←</span></h4>
+      <p>نئونی، فانتزی، خفن و اختصاصی</p>
+    </button>
+
+    <button class="feature" onclick="openPanel('gold')">
+      <div class="feature-icon">👑</div>
+      <h4>استیکرهای طلایی <span class="arrow">←</span></h4>
+      <p>مجموعه سلطنتی و لوکس</p>
+    </button>
+
+    <button class="feature" onclick="openPanel('wallpapers')">
+      <div class="feature-icon">🌌</div>
+      <h4>پس‌زمینه‌ها <span class="arrow">←</span></h4>
+      <p>آبی، بنفش و کهکشانی</p>
+    </button>
+
+    <button class="feature" onclick="openPanel('emoji')">
+      <div class="feature-icon">✨</div>
+      <h4>شکلک‌های جذاب <span class="arrow">←</span></h4>
+      <p>ترکیب‌های بامزه و خاص</p>
+    </button>
+
+    <button class="feature" onclick="openPanel('profile')">
+      <div class="feature-icon">🪪</div>
+      <h4>کارت پروفایل <span class="arrow">←</span></h4>
+      <p>کارت اختصاصی با اسم خودت</p>
+    </button>
+
+    <button class="feature" onclick="openPanel('rewards')">
+      <div class="feature-icon">🎁</div>
+      <h4>جوایز و مأموریت‌ها <span class="arrow">←</span></h4>
+      <p>چالش‌ها و پاداش‌های نمایشی</p>
+    </button>
+
+    <button class="feature" onclick="openPanel('account')">
+      <div class="feature-icon">👤</div>
+      <h4>حساب کاربری <span class="arrow">←</span></h4>
+      <p>نمایش اطلاعات حساب تو</p>
+    </button>
+
+    <button class="feature" onclick="openPanel('themes')">
+      <div class="feature-icon">🎨</div>
+      <h4>تم‌های رنگی <span class="arrow">←</span></h4>
+      <p>انتخاب ظاهر آبی یا بنفش</p>
+    </button>
+
+  </section>
+
+  <section class="banner">
+    <h3>🚀 آماده‌ای خاص‌تر باشی؟</h3>
+    <p>مجموعه‌های اختصاصی رو ببین و طرح موردعلاقه‌ات رو انتخاب کن.</p>
+    <button class="secondary-button" onclick="openPanel('stickers')">
+      دیدن استیکرها 🎭
+    </button>
+  </section>
+
+  <section class="profile">
+    <div class="avatar">👑</div>
+    <div class="profile-info">
+      <h4 id="profileName">عضو PrimeX</h4>
+      <p>عضو خانواده پرایم‌اکس 💙</p>
+    </div>
+    <span class="member">MEMBER</span>
+  </section>
+
+  <footer class="footer">
+    PrimeX VIP · ساخته‌شده با 💙💜
+  </footer>
+
+</div>
+
+<div class="overlay" id="overlay" onclick="outsideClose(event)">
+  <section class="modal">
+    <header class="modal-head">
+      <h3 id="modalTitle">امکانات</h3>
+      <button class="close" onclick="closePanel()">×</button>
+    </header>
+    <div id="modalBody"></div>
+  </section>
+</div>
+
+<script>
+const tg = window.Telegram && window.Telegram.WebApp;
+
+let selectedTheme = "blue";
+let points = 120;
+let completedMissions = [];
+
+if (tg) {
+  tg.ready();
+  tg.expand();
+
+  const user = tg.initDataUnsafe && tg.initDataUnsafe.user;
+
+  if (user) {
+    const name = user.first_name || "رفیق";
+    document.getElementById("username").textContent = name;
+    document.getElementById("profileName").textContent = name;
+  }
+}
+
+const stickerSets = [
+  {emoji:"😎", name:"خفن و باکلاس", tag:"NEON COLLECTION"},
+  {emoji:"👾", name:"موجودات فضایی", tag:"SPACE SERIES"},
+  {emoji:"🦊", name:"روباه نئونی", tag:"FANTASY PACK"},
+  {emoji:"🐉", name:"اژدهای افسانه‌ای", tag:"DRAGON SERIES"},
+  {emoji:"💎", name:"الماس آبی", tag:"BLUE DIAMOND"},
+  {emoji:"👻", name:"روح‌های بامزه", tag:"FUNNY GHOSTS"},
+  {emoji:"⚡", name:"قدرت الکتریکی", tag:"ENERGY PACK"},
+  {emoji:"🚀", name:"فضانوردها", tag:"GALAXY SERIES"}
+];
+
+const goldSets = [
+  {emoji:"👑", name:"تاج پادشاهی", tag:"ROYAL GOLD"},
+  {emoji:"🦁", name:"شیر سلطنتی", tag:"GOLDEN LION"},
+  {emoji:"🐲", name:"اژدهای طلایی", tag:"GOLD DRAGON"},
+  {emoji:"🏆", name:"قهرمان افسانه‌ای", tag:"CHAMPION"}
+];
+
+function openPanel(type) {
+  const title = document.getElementById("modalTitle");
+  const body = document.getElementById("modalBody");
+
+  const panels = {
+    vip: () => {
+      title.textContent = "👑 دنیای PrimeX VIP";
+      body.innerHTML = `
+        <p class="modal-description">
+          اینجا مرکز امکانات ویژه پرایم‌اکسه!
+        </p>
+        <div class="reward-row">
+          <div class="reward-icon">🎭</div>
+          <div><strong>مجموعه استیکرهای خاص</strong><small>طرح‌های نئونی و فانتزی</small></div>
+        </div>
+        <div class="reward-row">
+          <div class="reward-icon">🌌</div>
+          <div><strong>پس‌زمینه‌های اختصاصی</strong><small>طرح‌های آبی و بنفش</small></div>
+        </div>
+        <div class="reward-row">
+          <div class="reward-icon">🪪</div>
+          <div><strong>کارت پروفایل</strong><small>کارت نمایشی با نام تو</small></div>
+        </div>
+        <div class="notice">
+          این نسخه نمایشی است؛ خرید و وضعیت واقعی اشتراک هنوز به ربات متصل نشده است.
+        </div>
+        <button class="primary-button" onclick="openPanel('stickers')">مشاهده استیکرها</button>
+      `;
+    },
+
+    stickers: () => {
+      title.textContent = "🎭 استیکرهای ویژه";
+      body.innerHTML = `
+        <p class="modal-description">
+          مجموعه‌های فانتزی و نئونی برای انتخاب تو. این‌ها طرح‌های نمایشی داخل برنامه‌اند.
+        </p>
+        <div class="sticker-grid">
+          ${stickerSets.map((s,i) => `
+            <div class="sticker">
+              <div class="art">${s.emoji}</div>
+              <strong>${s.name}</strong>
+              <small>${s.tag}</small>
+              <button class="item-button" onclick="previewSticker(${i})">دیدن طرح</button>
+            </div>
+          `).join("")}
+        </div>
+        <div class="notice">
+          برای افزودن این مجموعه‌ها به تلگرام، باید بسته‌های واقعی استیکر ساخته یا لینک بسته‌های موجود اضافه شود.
+        </div>
+      `;
+    },
+
+    gold: () => {
+      title.textContent = "👑 استیکرهای طلایی";
+      body.innerHTML = `
+        <p class="modal-description">مجموعه سلطنتی با حال‌وهوای طلایی و لوکس.</p>
+        <div class="sticker-grid">
+          ${goldSets.map((s,i) => `
+            <div class="sticker gold-sticker">
+              <div class="art">${s.emoji}</div>
+              <strong>${s.name}</strong>
+              <small>${s.tag}</small>
+              <button class="item-button" onclick="previewGold(${i})">دیدن طرح</button>
+            </div>
+          `).join("")}
+        </div>
+        <div class="notice">
+          این طرح‌ها نمونه نمایشی هستند و هنوز بسته واقعی تلگرام یا محدودیت VIP ندارند.
+        </div>
+      `;
+    },
+
+    wallpapers: () => {
+      title.textContent = "🌌 پس‌زمینه‌های جذاب";
+      body.innerHTML = `
+        <p class="modal-description">یکی از حال‌وهوای رنگی زیر را انتخاب کن.</p>
+        <div class="wallpaper-grid">
+          <div class="wallpaper">
+            <strong>💙 اقیانوس نئونی</strong>
+            <span>آبی درخشان و بنفش</span>
+            <button class="secondary-button" onclick="chooseWallpaper(0)">انتخاب این طرح</button>
+          </div>
+          <div class="wallpaper">
+            <strong>💜 کهکشان بنفش</strong>
+            <span>بنفش فضایی و صورتی</span>
+            <button class="secondary-button" onclick="chooseWallpaper(1)">انتخاب این طرح</button>
+          </div>
+          <div class="wallpaper">
+            <strong>🌌 فضای عمیق</strong>
+            <span>سرمه‌ای، آبی و بنفش</span>
+            <button class="secondary-button" onclick="chooseWallpaper(2)">انتخاب این طرح</button>
+          </div>
+        </div>
+        <div class="notice">
+          انتخاب فعلی ظاهر همین مینی‌اپ را تغییر می‌دهد؛ پس‌زمینه چت تلگرام را مستقیماً تغییر نمی‌دهد.
+        </div>
+      `;
+    },
+
+    emoji: () => {
+      title.textContent = "✨ شکلک‌های جذاب";
+      body.innerHTML = `
+        <p class="modal-description">چند ترکیب بامزه و آماده برای استفاده در پیام‌ها.</p>
+        <div class="sticker-grid">
+          ${[
+            ["😎⚡","حالت خفن"],
+            ["💙🌌","اقیانوس آبی"],
+            ["👑💜","شاهزاده بنفش"],
+            ["🚀✨","سفر فضایی"],
+            ["🐉🔥","اژدهای آتشین"],
+            ["💎🦋","الماس درخشان"]
+          ].map((x,i) => `
+            <div class="sticker">
+              <div class="art">${x[0]}</div>
+              <strong>${x[1]}</strong>
+              <button class="item-button" onclick="copyEmoji(${i})">کپی شکلک‌ها</button>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    },
+
+    profile: () => {
+      title.textContent = "🪪 کارت پروفایل";
+      const name = document.getElementById("profileName").textContent;
+      body.innerHTML = `
+        <p class="modal-description">کارت نمایشی اختصاصی تو با رنگ‌های PrimeX.</p>
+        <div class="profile-card-preview">
+          <div class="big-avatar">👑</div>
+          <h3 id="cardName">${escapeHTML(name)}</h3>
+          <p>عضو خانواده PrimeX VIP</p>
+          <span class="rank">💎 LEVEL 1 · PRIME MEMBER</span>
+        </div>
+        <button class="primary-button" onclick="copyProfileName()">کپی نام پروفایل</button>
+        <div class="notice">این کارت فعلاً داخل برنامه نمایش داده می‌شود؛ خروجی تصویری هنوز ساخته نشده است.</div>
+      `;
+    },
+
+    rewards: () => {
+      title.textContent = "🎁 جایزه‌ها و مأموریت‌ها";
+      const missions = [
+        {icon:"🌟",name:"بازدید از امکانات",desc:"بخش‌های برنامه را ببین",reward:20},
+        {icon:"🎭",name:"کشف استیکرها",desc:"مجموعه استیکرها را باز کن",reward:30},
+        {icon:"🪪",name:"ساخت کارت پروفایل",desc:"کارت نمایشی خودت را ببین",reward:25}
+      ];
+
+      body.innerHTML = `
+        <p class="modal-description">مأموریت‌های نمایشی و امتیازهای آزمایشی.</p>
+        ${missions.map((m,i) => `
+          <div class="reward-row">
+            <div class="reward-icon">${m.icon}</div>
+            <div><strong>${m.name}</strong><small>${m.desc} · ${m.reward} امتیاز</small></div>
+            <button class="small-button" onclick="doMission(${i},${m.reward})">
+              ${completedMissions.includes(i) ? "انجام شد" : "شروع"}
+            </button>
+          </div>
+        `).join("")}
+        <div class="notice">
+          امتیازها فقط در همین صفحه آزمایشی‌اند؛ با بستن یا بارگذاری دوباره ممکن است از بین بروند.
+        </div>
+      `;
+    },
+
+    account: () => {
+      title.textContent = "👤 حساب کاربری";
+      const user = tg && tg.initDataUnsafe && tg.initDataUnsafe.user;
+      const name = user ? user.first_name || "کاربر" : "کاربر مهمان";
+      const username = user && user.username ? "@" + user.username : "ثبت نشده";
+      body.innerHTML = `
+        <div class="profile-card-preview">
+          <div class="big-avatar">👤</div>
+          <h3>${escapeHTML(name)}</h3>
+          <p>نام کاربری: ${escapeHTML(username)}</p>
+          <span class="rank">MEMBER</span>
+        </div>
+        <div class="notice">
+          وضعیت اشتراک: هنوز بررسی نشده<br>
+          شناسه کاربر: ${user ? escapeHTML(String(user.id)) : "در حالت پیش‌نمایش"}
+          <br><br>
+          اطلاعات دریافتی از صفحه برای نمایش است و به‌تنهایی برای تأیید هویت یا خرید امن کافی نیست.
+        </div>
+      `;
+    },
+
+    themes: () => {
+      title.textContent = "🎨 انتخاب رنگ برنامه";
+      body.innerHTML = `
+        <p class="modal-description">ظاهر مینی‌اپ را به سلیقه خودت تغییر بده.</p>
+        <div class="wallpaper-grid">
+          <div class="wallpaper">
+            <strong>💙 آبی و بنفش</strong>
+            <span>تم اصلی PrimeX</span>
+            <button class="secondary-button" onclick="setTheme('blue')">انتخاب تم</button>
+          </div>
+          <div class="wallpaper" style="background:linear-gradient(120deg,#25205a,#a33dd8)">
+            <strong>💜 بنفش نئونی</strong>
+            <span>رنگ‌های بنفش و صورتی</span>
+            <button class="secondary-button" onclick="setTheme('purple')">انتخاب تم</button>
+          </div>
+          <div class="wallpaper" style="background:linear-gradient(120deg,#102d51,#1ab8c9)">
+            <strong>🩵 آبی یخی</strong>
+            <span>آبی روشن و فیروزه‌ای</span>
+            <button class="secondary-button" onclick="setTheme('ice')">انتخاب تم</button>
+          </div>
+        </div>
+      `;
+    }
+  };
+
+  if (panels[type]) {
+    panels[type]();
+    document.getElementById("overlay").classList.add("show");
+  }
+}
+
+function closePanel() {
+  document.getElementById("overlay").classList.remove("show");
+}
+
+function outsideClose(event) {
+  if (event.target.id === "overlay") closePanel();
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, ch => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  })[ch]);
+}
+
+function notify(message) {
+  if (tg && tg.showPopup) {
+    tg.showPopup({
+      title: "PrimeX 💙",
+      message: message,
+      buttons: [{type:"ok", text:"باشه"}]
+    });
+  } else {
+    alert(message);
+  }
+}
+
+function previewSticker(index) {
+  const s = stickerSets[index];
+  notify(s.emoji + "  " + s.name + "\n\nاین طرح فعلاً پیش‌نمایش داخل برنامه است.");
+}
+
+function previewGold(index) {
+  const s = goldSets[index];
+  notify(s.emoji + "  " + s.name + "\n\nاین طرح طلایی فعلاً پیش‌نمایش داخل برنامه است.");
+}
+
+function chooseWallpaper(index) {
+  const styles = [
+    "linear-gradient(135deg,#061a37,#1659a7,#5734a8)",
+    "linear-gradient(135deg,#20113d,#7135a8,#ce58d8)",
+    "linear-gradient(135deg,#090c1b,#102f60,#6443b8)"
+  ];
+
+  document.body.style.background = styles[index];
+  notify("پس‌زمینه مینی‌اپ تغییر کرد 💙");
+}
+
+function copyText(value) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(value)
+      .then(() => notify("کپی شد!"))
+      .catch(() => notify("کپی خودکار در این محیط پشتیبانی نشد."));
+  } else {
+    notify("کپی خودکار در این محیط پشتیبانی نشد.");
+  }
+}
+
+function copyEmoji(index) {
+  const emojis = [
+    "😎⚡", "💙🌌", "👑💜", "🚀✨", "🐉🔥", "💎🦋"
+  ];
+  copyText(emojis[index]);
+}
+
+function copyProfileName() {
+  copyText(document.getElementById("profileName").textContent);
+}
+
+function doMission(index, reward) {
+  if (completedMissions.includes(index)) {
+    notify("این مأموریت قبلاً در همین نشست انجام شده است.");
+    return;
+  }
+
+  completedMissions.push(index);
+  points += reward;
+
+  notify("آفرین! مأموریت انجام شد 🎉\n+" + reward + " امتیاز نمایشی");
+  openPanel("rewards");
+}
+
+function setTheme(theme) {
+  selectedTheme = theme;
+
+  const root = document.documentElement;
+
+  if (theme === "purple") {
+    root.style.setProperty("--blue", "#b15cff");
+    root.style.setProperty("--purple", "#ed55c8");
+  } else if (theme === "ice") {
+    root.style.setProperty("--blue", "#24c8e5");
+    root.style.setProperty("--purple", "#397dff");
+  } else {
+    root.style.setProperty("--blue", "#38a3ff");
+    root.style.setProperty("--purple", "#9a60ff");
+  }
+
+  notify("تم جدید انتخاب شد 🎨");
+}
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") closePanel();
+});
+</script>
+
+</body>
+      </html>
